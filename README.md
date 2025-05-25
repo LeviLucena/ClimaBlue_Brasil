@@ -54,7 +54,7 @@ Aplicação web desenvolvida em Flask para visualização interativa de meteogra
 ---
 
 ## 📌 Descrição
-Esta aplicação permite ao usuário escolher um **estado brasileiro**; automaticamente, ela identifica as coordenadas da capital correspondente e gera diferentes tipos de meteogramas usando a API Meteoblue. Com uma interface moderna, amigável e responsiva, construída com Bootstrap 5, proporciona uma experiência intuitiva. O backend em Flask gera URLs personalizadas dos meteogramas, com parâmetros ajustáveis, incluindo o idioma em português.
+Esta aplicação permite ao usuário escolher um **estado brasileiro**; automaticamente, ela identifica as coordenadas da capital correspondente e gera diferentes tipos de meteogramas usando a API Meteoblue. Com uma interface moderna, amigável e responsiva, construída com Bootstrap 5, proporciona uma experiência intuitiva. O backend em Flask gera URLs personalizadas dos meteogramas, com parâmetros ajustáveis, incluindo o idioma em português. (Assista ao vídeo 
 
 ---
 
@@ -67,6 +67,9 @@ Esta aplicação permite ao usuário escolher um **estado brasileiro**; automati
 - 📱 Interface responsiva com Bootstrap 5.
 - 🐍 Backend em Python com Flask.
 - 🇧🇷 Suporte ao idioma português nos meteogramas.
+
+## 🧪 Exemplo de Uso
+https://github.com/user-attachments/assets/6a80e69e-80a0-4a28-b001-b59b6309f86f
 
 ---
 
@@ -148,8 +151,6 @@ Para rodar a aplicação localmente:
 python run.py
 ```
 Acesse no navegador em: http://127.0.0.1:5000.
-
-## 🧪 Exemplo de Uso
 
 ## 🤝 Contribuições
 Sinta-se à vontade para contribuir, sugerir melhorias ou relatar problemas para ajudar a desenvolver este projeto.
