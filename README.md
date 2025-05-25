@@ -45,7 +45,8 @@
 
 </p>
 
-![logoClimaBlue](https://github.com/user-attachments/assets/f5712693-cb8c-417c-9dbe-69cd93aee1c7)
+![logo 5555](https://github.com/user-attachments/assets/79246f6a-46ba-40ee-b86b-fc1a3d4a57f6)
+
 
 # 🌤️ 🌾 Previsão Meteorológica Inteligente: Sistema de Visualização de Meteogramas Focado no Agronegócio
 A meteorologia sempre foi uma aliada estratégica do agronegócio. Seja no planejamento de safras, no manejo de irrigação ou na prevenção de perdas por eventos extremos, o conhecimento antecipado das condições climáticas é vital. Pensando nisso, desenvolvi uma aplicação web focada na visualização de meteogramas – gráficos detalhados que mostram a previsão do tempo de forma visual e intuitiva – com integração à API da Meteoblue, uma das mais confiáveis do mundo.
