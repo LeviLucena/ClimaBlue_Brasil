@@ -74,7 +74,8 @@ Esta aplicação permite ao usuário escolher um **estado brasileiro**; automati
 - 🇧🇷 Suporte ao idioma português nos meteogramas.
 
 ## 🧪 Exemplo de Uso
-https://github.com/user-attachments/assets/6a80e69e-80a0-4a28-b001-b59b6309f86f
+https://github.com/user-attachments/assets/f2ba96f5-9bd7-4aab-8291-4a80724c8947
+
 
 ---
 
