@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Visualizador de Meteogramas Meteoblue</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logotipo" class="img-fluid" style="max-height: 200px;">
+</div>
+
+<div class="container my-5">
+    <h1 class="mb-4 text-center">Visualizador de Meteogramas Meteoblue</h1>
+
+    <!-- Formulário -->
+    <form id="meteogramForm" class="row g-3">
+
+        <!-- Seleção de Estado -->
+        <div class="col-md-6">
+            <label for="estado" class="form-label">Selecione o Estado:</label>
+            <select class="form-select" id="estado" name="estado" required>
+                <option value="" disabled selected>Escolha um estado...</option>
+                {% for sigla, nome in estados.items() %}
+                <option value="{{ sigla }}" {% if estado_selecionado == sigla %}selected{% endif %}>{{ nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Latitude e Longitude preenchidos automaticamente -->
+        <div class="col-md-3">
+            <label for="lat" class="form-label">Latitude:</label>
+            <input type="number" step="any" class="form-control" id="lat" name="lat" value="{{ lat or '' }}" readonly required>
+        </div>
+
+        <div class="col-md-3">
+            <label for="lon" class="form-label">Longitude:</label>
+            <input type="number" step="any" class="form-control" id="lon" name="lon" value="{{ lon or '' }}" readonly required>
+        </div>
+
+        <!-- Altitude -->
+        <div class="col-md-4">
+            <label for="asl" class="form-label">Altitude (m):</label>
+            <input type="number" class="form-control" id="asl" name="asl" placeholder="Opcional">
+        </div>
+
+        <!-- Tipo de meteograma -->
+        <div class="col-md-4">
+            <label for="type" class="form-label">Tipo de Meteograma:</label>
+            <select class="form-select" id="type" name="type" required>
+                {% for key in meteogram_types.keys() %}
+                    <option value="{{ key }}" {% if type_selecionado == key %}selected{% endif %}>{{ friendly_names[key] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Botão -->
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Gerar Meteograma</button>
+        </div>
+    </form>
+
+    <!-- Resultado -->
+    <div id="result" class="mt-4 text-center">
+        {% if url %}
+            <img src="{{ url }}" alt="Meteograma" class="img-fluid rounded shadow-sm" />
+        {% elif erro %}
+            <div class="alert alert-danger">{{ erro }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Bootstrap JS + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Dados das capitais com lat/lon para preencher os campos automaticamente
+    const capitais = {
+        {% for sigla, info in capitais.items() %}
+        "{{ sigla }}": {lat: {{ info.lat }}, lon: {{ info.lon }} },
+        {% endfor %}
+    };
+
+    const estadoSelect = document.getElementById('estado');
+    const latInput = document.getElementById('lat');
+    const lonInput = document.getElementById('lon');
+
+    estadoSelect.addEventListener('change', () => {
+        const sigla = estadoSelect.value;
+        if (capitais[sigla]) {
+            latInput.value = capitais[sigla].lat;
+            lonInput.value = capitais[sigla].lon;
+        } else {
+            latInput.value = '';
+            lonInput.value = '';
+        }
+    });
+
+    // Envio do formulário via fetch API
+    document.getElementById('meteogramForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const lat = form.lat.value;
+        const lon = form.lon.value;
+        const type = form.type.value;
+        const asl = form.asl.value;
+
+        let url = `/api/meteogram?lat=${lat}&lon=${lon}&type=${type}`;
+        if (asl) url += `&asl=${asl}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const resultDiv = document.getElementById('result');
+        if (data.url) {
+            resultDiv.innerHTML = `<img src="${data.url}" alt="Meteograma" class="img-fluid rounded shadow-sm" />`;
+        } else {
+            resultDiv.innerHTML = `<div class="alert alert-danger">${data.error || 'Erro desconhecido'}</div>`;
+        }
+    });
+
+    // Inicializa latitude e longitude ao carregar a página
+    window.addEventListener('load', () => {
+        if (latInput.value && lonInput.value) {
+            // mantém preenchido
+        } else {
+            latInput.value = '';
+            lonInput.value = '';
+        }
+    });
+</script>
+</body>
+</html>

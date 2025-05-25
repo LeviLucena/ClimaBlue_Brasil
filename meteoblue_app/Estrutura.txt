@@ -1,0 +1,25 @@
+## Estrutura recomendada da aplicação web
+
+
+project_root/
+│
+├── app/
+│   ├── __init__.py                 # Inicializa a aplicação Flask
+│   ├── config.py                   # Configurações (ex: API keys, env vars)
+│   ├── routes.py                   # Rotas Flask (endpoints da API e páginas)
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── meteogram_generator.py # Geração dos URLs dos meteogramas
+│   ├── templates/                  # HTML templates (Jinja2)
+│   │   └── index.html              # Página principal
+│   ├── static/                     # Arquivos estáticos CSS, JS, imagens
+│   └── utils/                     # Funções auxiliares (se necessário)
+│       └── __init__.py
+│
+├── tests/
+│   └── test_meteogram_generator.py # Testes unitários
+│
+├── requirements.txt               # Dependências do Python
+├── run.py                        # Script para rodar a aplicação
+├── .env                          # Variáveis de ambiente (API key, configs)
+└── README.md                     # Documentação do projeto
