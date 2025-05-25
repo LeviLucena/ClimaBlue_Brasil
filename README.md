@@ -47,7 +47,11 @@
 
 ![logoClimaBlue](https://github.com/user-attachments/assets/f5712693-cb8c-417c-9dbe-69cd93aee1c7)
 
-# 🌤️ Visualizador de Meteogramas Meteoblue
+# 🌤️ 🌾 Previsão Meteorológica Inteligente: Sistema de Visualização de Meteogramas Focado no Agronegócio
+A meteorologia sempre foi uma aliada estratégica do agronegócio. Seja no planejamento de safras, no manejo de irrigação ou na prevenção de perdas por eventos extremos, o conhecimento antecipado das condições climáticas é vital. Pensando nisso, desenvolvi uma aplicação web focada na visualização de meteogramas – gráficos detalhados que mostram a previsão do tempo de forma visual e intuitiva – com integração à API da Meteoblue, uma das mais confiáveis do mundo.
+
+🌾 Impacto para o Agronegócio
+O Brasil é uma potência agrícola, mas também um país vulnerável a eventos climáticos severos, como: Geadas no Sul, Longos períodos de seca no Centro-Oeste, Chuvas excessivas na Região Norte e Nordeste.
 
 Aplicação web desenvolvida em Flask para visualização interativa de meteogramas a partir da API Meteoblue. Suporte a diversos tipos de meteogramas e seleção dinâmica de capitais brasileiras.
 
